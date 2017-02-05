@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.cygwin.exe.debug.136057181/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.cygwin.exe.debug.136057181/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.cygwin.exe.debug.136057181/PATH/value=C\:\\cygwin\\bin;C\:/Program Files/Java/jre1.8.0_45/bin/server;C\:/Program Files/Java/jre1.8.0_45/bin;C\:/Program Files/Java/jre1.8.0_45/lib/amd64;C\:\\ProgramData\\Oracle\\Java\\javapath;C\:\\Program Files (x86)\\Intel\\iCLS Client\\;C\:\\Program Files\\Intel\\iCLS Client\\;C\:\\Program Files\\Dell\\DW WLAN Card;;C\:\\Windows\\system32;C\:\\Windows;C\:\\Windows\\System32\\Wbem;C\:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C\:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C\:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C\:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C\:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C\:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C\:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C\:\\Users\\Joseph\\Downloads\\eclipse\\eclipse
+environment/project/cdt.managedbuild.config.gnu.cygwin.exe.debug.136057181/append=true
+environment/project/cdt.managedbuild.config.gnu.cygwin.exe.debug.136057181/appendContributed=true
