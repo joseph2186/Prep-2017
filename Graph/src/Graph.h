@@ -32,6 +32,9 @@ public:
 	void DFSUtil(int i, bool visited[]);
 	void DFS(int s);
 
+	bool isCyclicUtil(int i, bool visited[], bool recstack[]);
+	bool isCyclic();
+
 	int getNumVertices();
 
 	//destructor

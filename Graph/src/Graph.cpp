@@ -113,6 +113,51 @@ void Graph::DFS(int s)
 
 	DFSUtil(s,visited);
 	cout << endl;
+
+	delete[] visited;
+}
+
+bool Graph::isCyclicUtil(int i, bool visited[], bool recstack[])
+{
+	visited[i]=true;
+	recstack[i]=true;
+
+	list<int>::iterator itr;
+	for(itr=this->adj[i].begin();itr!=this->adj[i].end();itr++)
+	{
+		if(visited[*itr]==false && isCyclicUtil(*itr, visited, recstack))
+		{
+			return true;
+		}
+		if(recstack[*itr])
+		{
+			return true;
+		}
+	}
+
+	recstack[i] = false;
+	return false;
+}
+
+bool Graph::isCyclic()
+{
+	bool *visited = new bool[this->v];
+	bool *recstack = new bool[this->v];
+
+	for(int i=0;i<this->v;i++)
+	{
+		visited[i]=false;
+		recstack[i]=false;
+	}
+
+	for(int i=0;i<this->v;i++)
+	{
+		if(isCyclicUtil(i,visited,recstack))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 Graph::~Graph() {
