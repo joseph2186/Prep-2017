@@ -24,6 +24,13 @@ GraphEdgeRep::GraphEdgeRep(int v, int e):V(v), E(e){
 	{
 		this->parent[i] = -1;
 	}
+
+	this->Subset = new struct subsets[this->V];
+	for(int i=0;i<this->V;i++)
+	{
+		this->Subset[i].parent = i;
+		this->Subset[i].rank = 0;
+	}
 }
 
 GraphEdgeRep::GraphEdgeRep(GraphEdgeRep& rhs){
@@ -87,7 +94,46 @@ void GraphEdgeRep::union_find(int u, int v)
 	parent[parent_u]=parent_v;
 }
 
+
+int GraphEdgeRep::findPathCompressed(int i)
+{
+	if (this->Subset[i].parent != i)
+		this->Subset[i].parent = findPathCompressed(this->Subset[i].parent);
+	return this->Subset[i].parent;
+}
+
+void GraphEdgeRep::union_find_ranked(int u, int v)
+{
+	int parent_u = findPathCompressed(u);
+	int parent_v = findPathCompressed(v);
+
+	if (this->Subset[parent_u].rank < this->Subset[parent_v].rank)
+		this->Subset[parent_u].parent = parent_v;
+	else if (this->Subset[parent_u].rank > this->Subset[parent_v].rank)
+		this->Subset[parent_v].parent = parent_u;
+	else
+	{
+		this->Subset[parent_v].parent = parent_u;
+		this->Subset[parent_u].rank++;
+	}
+}
+
 bool GraphEdgeRep::isCycle()
+{
+	for(int i=0;i<this->edge_count;i++)
+	{
+		int x = findPathCompressed(this->Edge[i].src);
+		int y = findPathCompressed(this->Edge[i].dest);
+
+		if (x == y)
+			return true;
+
+		union_find_ranked(x,y);
+	}
+	return false;
+}
+
+bool GraphEdgeRep::isCycleOpt()
 {
 	for(int i=0;i<this->edge_count;i++)
 	{

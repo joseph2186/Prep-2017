@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Graph.h"
 #include "GraphEdgeRep.h"
+#include <ctime>
 
 using namespace std;
 
@@ -46,23 +47,47 @@ int main() {
 
 	case 2:
 	{
-		GraphEdgeRep g2(3,3);
-		g2.addEdge(0,1);
+		GraphEdgeRep g2(10,10);
+		g2.addEdge(0,4);
+		g2.addEdge(4,9);
+		g2.addEdge(9,5);
+		g2.addEdge(4,3);
+		g2.addEdge(1,3);
+		g2.addEdge(2,3);
+		g2.addEdge(6,9);
+		g2.addEdge(7,6);
+		g2.addEdge(6,8);
+
+		//edge causing the cycle
 		g2.addEdge(1,2);
-		g2.addEdge(0,2);
 
 		cout << "num edges: " << g2.getNumEdges() << " num vertices: " << g2.getNumVertices() << endl;
 
 		g2.printGraph();
 
+		int start_s=clock();
 		if(g2.isCycle() == true)
 		{
-			cout << "cycle" << endl;
+			cout << "cycle no opt" << endl;
 		}
 		else
 		{
-			cout << "no cycle" << endl;
+			cout << "no cycle no opt" << endl;
 		}
+		int stop_s=clock();
+		cout << "time no opt: " << (stop_s-start_s)/double(CLOCKS_PER_SEC) << endl;
+
+		start_s=clock();
+		if(g2.isCycleOpt() == true)
+		{
+			cout << "cycle opt" << endl;
+		}
+		else
+		{
+			cout << "no cycle opt" << endl;
+		}
+		stop_s=clock();
+		cout << "time opt: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
 		break;
 	}
 	}

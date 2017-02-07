@@ -16,12 +16,18 @@ private:
 		int src, dest;
 	};
 
+	struct subsets{
+		int parent;
+		int rank;
+	};
+
 	int V;
 	int E;
 	int edge_count;
 
 	struct edge *Edge;
 	int *parent;
+	struct subsets *Subset;
 
 public:
 	GraphEdgeRep();
@@ -36,7 +42,12 @@ public:
 	int find(int i);
 	void union_find(int u, int v);
 
+	int findPathCompressed(int i);
+	void union_find_ranked(int u, int v);
+
 	bool isCycle();
+
+	bool isCycleOpt();
 
 	virtual ~GraphEdgeRep();
 };
