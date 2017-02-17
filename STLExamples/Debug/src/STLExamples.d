@@ -1,1 +1,1 @@
-src/STLExamples.d: ../src/STLExamples.cpp
+src/STLExamples.o: ../src/STLExamples.cpp

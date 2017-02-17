@@ -16,7 +16,7 @@ using namespace std;
 int main() {
 	int input;
 
-	cout << "1. di-graph cycle example" << endl << "2. union find edge based example" << endl;
+	cout << "1. di-graph cycle example" << endl << "2. union find edge based example" << endl << "3. topological sort" << endl << "4. bipartite example" << endl;
 	cin >> input;
 
 	switch (input)
@@ -89,6 +89,33 @@ int main() {
 		stop_s=clock();
 		cout << "time opt: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
 		break;
+	}
+	case 3:
+	{
+		Graph g3(6);
+		g3.addEdge(5,2);
+		g3.addEdge(5,0);
+		g3.addEdge(4,0);
+		g3.addEdge(4,1);
+		g3.addEdge(2,3);
+		g3.addEdge(3,1);
+
+		g3.topologicalSort();
+		break;
+	}
+
+	case 4:
+	{
+		Graph g4(4);
+		g4.addEdge(0,1);
+		g4.addEdge(0,3);
+		g4.addEdge(2,1);
+		g4.addEdge(2,3);
+
+		//edge to fail bipartite
+		g4.addEdge(0,2);
+
+		cout << "is bipartite " << g4.isBipartite() << endl;
 	}
 	}
 

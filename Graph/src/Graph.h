@@ -9,6 +9,7 @@
 #define GRAPH_H_
 
 #include <list>
+#include<stack>
 using namespace std;
 
 class Graph {
@@ -34,6 +35,11 @@ public:
 
 	bool isCyclicUtil(int i, bool visited[], bool recstack[]);
 	bool isCyclic();
+
+	void topologicalSortUtil(int i, bool visited[], stack<int>& stack);
+	void topologicalSort();
+
+	bool isBipartite();
 
 	int getNumVertices();
 

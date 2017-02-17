@@ -1,1 +1,1 @@
-src/Sorting.d: ../src/Sorting.cpp
+src/Sorting.o: ../src/Sorting.cpp

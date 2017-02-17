@@ -7,9 +7,11 @@
 //============================================================================
 
 #include <iostream>
+#include<fstream>
+#include <string>
 using namespace std;
 
-void insertion_sort(int arr[], int size)
+void insertion_sort(long long int arr[], int size)
 {
 	for (int i=1 ; i<size ; i++)
 	{
@@ -24,12 +26,13 @@ void insertion_sort(int arr[], int size)
 	}
 }
 
-void merge(int arr[], int l, int m, int r)
+
+void merge(long long int arr[], int l, int m, int r)
 {
-	cout << "inside merge" << endl;
+
 	int n1 = m-l+1;
 	int n2 = r-m;
-	int l1[n1], l2[n2];
+	long long int l1[n1], l2[n2];
 
 	int i, j, k;
 
@@ -75,11 +78,11 @@ void merge(int arr[], int l, int m, int r)
 	}
 }
 
-void merge_sort(int arr[], int l, int r)
+void merge_sort(long long int arr[], int l, int r)
 {
 	if (l<r)
 	{
-		int m = l+(r-1)/2;
+		int m = (l+r)/2;
 
 		merge_sort(arr, l, m);
 		merge_sort(arr, m+1, r);
@@ -89,6 +92,7 @@ void merge_sort(int arr[], int l, int r)
 }
 
 int main() {
+#if 0
 	int size;
 	cout << "enter the size of the array" << endl;
 	cin >> size;
@@ -115,6 +119,35 @@ int main() {
 		cout << arr[i] << " ";
 	}
 	cout << endl;
+	cin >> size;
+#else
 
+	int i=0;
+	int size = 0;
+	string line;
+	ifstream file;
+	file.open("input.txt");
+	while(getline(file,line))
+		size++;
+	file.close();
+
+	file.open("input.txt");
+	long long int arr[size];
+	while(file >> arr[i])
+	{
+		//cout << arr[i] << endl;
+		i++;
+	}
+
+	file.close();
+	cout << "i=" << i << "size = " << size << endl;
+	merge_sort(arr, 0, size-1);
+	for (int i=0 ; i<size ; i++)
+	{
+		cout << arr[i] << endl;
+	}
+
+	cin >> i;
+#endif
 	return 0;
 }

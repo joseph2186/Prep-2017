@@ -8,6 +8,8 @@
 #include <iostream>
 #include "Graph.h"
 #include <vector>
+#include<stack>
+#include<queue>
 using namespace std;
 
 Graph::Graph() {
@@ -158,6 +160,81 @@ bool Graph::isCyclic()
 		}
 	}
 	return false;
+}
+
+void Graph::topologicalSortUtil(int i, bool visited[], stack<int>& stack)
+{
+	visited[i] = true;
+
+	list<int>::iterator itr;
+	for(itr=this->adj[i].begin();itr!=this->adj[i].end();itr++)
+	{
+		if(visited[*itr]!=true)
+		{
+			topologicalSortUtil(*itr, visited, stack);
+		}
+	}
+
+	stack.push(i);
+	cout << "pushing i " << i << endl;
+}
+
+void Graph::topologicalSort()
+{
+	bool *visited = new bool[this->v];
+	stack<int> stack;
+
+	for(int i=0;i<this->v;i++)
+		visited[i]=false;
+
+	for(int i=0;i<this->v;i++)
+		if (visited[i]!=true)
+			topologicalSortUtil(i,visited,stack);
+
+	while(stack.empty() != true)
+	{
+		cout << stack.top() << " ";
+		stack.pop();
+	}
+
+	cout << endl;
+
+	delete[] visited;
+}
+
+bool Graph::isBipartite()
+{
+	bool retVal = true;
+	int color[this->v];
+	queue<int> queue;
+
+	for(int i=0;i<this->v;i++)
+		color[i] = -1;
+
+	queue.push(0);
+
+	while(queue.empty() != true)
+	{
+		int i = queue.front();
+		queue.pop();
+
+		list<int>::iterator itr;
+
+		for(itr=this->adj[i].begin();itr!=this->adj[i].end();itr++)
+		{
+			if(color[*itr] == -1)
+			{
+				color[*itr] = color[i] - 1;
+				queue.push(*itr);
+			}
+			if(color[*itr] == color[i])
+			{
+				retVal = false;
+			}
+		}
+	}
+
+	return retVal;
 }
 
 Graph::~Graph() {
