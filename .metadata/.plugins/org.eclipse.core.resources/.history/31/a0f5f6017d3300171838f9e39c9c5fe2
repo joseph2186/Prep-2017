@@ -1,0 +1,124 @@
+//============================================================================
+// Name        : EPI_6.cpp
+// Author      : Joe
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+//helper functions
+template <typename T> void displayVector(vector<T> &A)
+{
+	typename std:vector<T>::iterator it;
+	for(it = A.begin() ; it != A.end() ; it++)
+	{
+		cout << *it;
+	}
+}
+
+//6.1 - Dutch flag program
+//o(n) runtime o(1) space complexity
+typedef enum
+{
+	RED,
+	WHITE,
+	BLUE
+}color;
+
+void DutchFlagPartition(int pivot_index, vector<color>* A_ptr)
+{
+	vector<color>& A = *A_ptr;
+	color pivot = A[pivot_index];
+
+	//first pass - group all elements less than the pivot
+	int smaller = 0;
+	for(int i=0 ; i< A.size() ; i++)
+	{
+		if (A[i] < pivot)
+		{
+			swap(A[i], A[smaller++]);
+		}
+	}
+
+	//second pass - group all elements greater than the pivot
+	int larger = A.size() - 1;
+	for(int i = A.size() - 1 ; i >=0 && A[i] >= pivot ; i--)
+	{
+		if(A[i] > pivot)
+		{
+			swap(A[i], A[larger--]);
+		}
+	}
+}
+
+//6.2 - Add one to the a number represented in the decimal encoded array form
+vector<int> plusOne(vector<int> A)
+{
+	//increment the last digit
+	++A.back();
+	for(int i = A.size()-1 ; i >= 0 && A[i] == 10 ; i++)
+	{
+		A[i] = 0;
+		++A[i-1];
+	}
+	if (A[0] == 10)
+	{
+		A[0] = 0;
+		A.insert(A.begin(),1);
+	}
+	return A;
+}
+
+int main() {
+	int choice;
+	vector<color> flag;
+	vector<int> decimalEncodedArray;
+	flag.push_back(BLUE);
+	flag.push_back(WHITE);
+	flag.push_back(BLUE);
+	flag.push_back(RED);
+
+	cout << "EPI 6" << endl;
+	cout << "1. Dutch flag partition" << endl << "2. Add 1 to decimal representation of number as array" << endl;
+	cout << "enter choice: " ;
+	cin >> choice;
+
+	switch (choice)
+	{
+	case 1:
+	{
+		DutchFlagPartition(WHITE, &flag);
+		displayVector(flag);
+		break;
+	}
+	case 2:
+	{
+		int input;
+		int digit;
+		cout << "Enter the number of digits:";
+		cin >> input;
+		while(input--)
+		{
+			cin >> digit;
+			decimalEncodedArray.push_back(digit);
+		}
+		decimalEncodedArray = plusOne(decimalEncodedArray);
+		displayVector(decimalEncodedArray);
+		break;
+	}
+	default:
+	{
+		cout << "Wrong choice";
+		break;
+	}
+	}
+	return 0;
+}

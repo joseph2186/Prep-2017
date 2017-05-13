@@ -1,0 +1,232 @@
+//============================================================================
+// Name        : EPI_6.cpp
+// Author      : Joe
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
+#include <limits>
+#include <queue>
+
+using namespace std;
+
+
+//helper functions
+template <typename T> void displayVector(vector<T> &A, int n)
+{
+	if (n==0)
+	{
+		typename std::vector<T>::iterator it;
+		for(it = A.begin() ; it != A.end() ; it++)
+		{
+			cout << *it;
+		}
+	}
+	else
+	{
+		for(int i=0 ; i<n ; i++)
+		{
+			cout << A[i];
+		}
+	}
+
+	cout << endl;
+}
+
+template <typename T> void inputVector(vector<T> &A)
+{
+	T input;
+	int size;
+	cout << "enter the number of elements: ";
+	cin >> size;
+	cout << "Enter the values one by one:";
+	while(size--)
+	{
+		cin >> input;
+		A.push_back(input);
+	}
+	cout << endl;
+}
+
+//6.1 - Dutch flag program
+//o(n) runtime o(1) space complexity
+void DutchFlagPartition(int pivot_index, vector<int>* A_ptr)
+{
+	vector<int>& A = *A_ptr;
+	int pivot = A[pivot_index];
+
+	//first pass - group all elements less than the pivot
+	int smaller = 0;
+	for(int i=0 ; i< A.size() ; i++)
+	{
+		if (A[i] < pivot)
+		{
+			swap(A[i], A[smaller++]);
+		}
+	}
+
+	//second pass - group all elements greater than the pivot
+	int larger = A.size() - 1;
+	for(int i = A.size() - 1 ; i >=0 && A[i] >= pivot ; i--)
+	{
+		if(A[i] > pivot)
+		{
+			swap(A[i], A[larger--]);
+		}
+	}
+}
+
+//6.2 - Add one to the a number represented in the decimal encoded array form
+vector<int> plusOne(vector<int> A)
+{
+	//increment the last digit
+	++A.back();
+	for(int i = A.size()-1 ; i > 0 && A[i] == 10 ; --i)
+	{
+		A[i] = 0;
+		++A[i-1];
+	}
+	if (A[0] == 10)
+	{
+		A[0] = 0;
+		A.insert(A.begin(),1);
+	}
+	return A;
+}
+
+//6.5 - eliminate duplicates in a array
+//return the number of valid entries in the array
+int removeDuplicates(vector<int> &A)
+{
+	int write_index = 1;
+
+	if(A.empty())
+	{
+		return 0;
+	}
+
+	for(int i=0 ; i<A.size() ; i++)
+	{
+		if (A[i] != A[write_index - 1])
+		{
+			A[write_index++] = A[i];
+		}
+	}
+	return write_index;
+}
+
+//6.6 - Buy and selll stock once
+double buyAndSellOnce(vector<double> &prices)
+{
+
+	double min_price_so_far = numeric_limits<double>::max();
+	double max_profit = 0;
+	vector<double>::iterator it;
+	for ( it = prices.begin(); it!= prices.end(); it++)
+	{
+		double max_profit_today = *it - min_price_so_far;
+		max_profit = max(max_profit, max_profit_today);
+		min_price_so_far = min(min_price_so_far, *it);
+	}
+	return max_profit;
+}
+
+//6.8 - Print all primes till n - sieve method
+vector<int> primesToN(int n)
+{
+	vector<int> primes;
+	deque<bool> is_prime(n+1, true);
+
+	is_prime[0] = is_prime[1] = false;
+	primes.push_back(0);
+	primes.push_back(1);
+
+	for(int i=0 ; i<n ; i++)
+	{
+		if(is_prime[i] == true)
+		{
+			primes.push_back(i);
+			for(int j=i ; j<n ; j += i)
+			{
+				is_prime[j] = false;
+			}
+		}
+
+	}
+	return primes;
+}
+
+int main() {
+	int choice;
+	vector<int> flag;
+	vector<int> decimalEncodedArray;
+	vector<double> prices;
+	vector<int> primes;
+	vector<int> duplicateArray;
+
+	cout << "EPI 6" << endl;
+	do
+	{
+		cout << "1. Dutch flag partition" << endl << "2. Add 1 to decimal representation of number as array" << endl << "3. Buy and sell stocks once" << endl;
+		cout << "4. Print prime to n" << endl << "5. Eliminate duplicates in array" << endl;
+		cout << "enter choice: " ;
+		cin >> choice;
+	    switch (choice)
+	    {
+		case 1:
+		{
+			int pivot;
+			inputVector(flag);
+			cout << "enter the pivot:";
+			cin >> pivot;
+			DutchFlagPartition(pivot, &flag);
+			displayVector(flag,0);
+			break;
+		}
+		case 2:
+		{
+			inputVector(decimalEncodedArray);
+			decimalEncodedArray = plusOne(decimalEncodedArray);
+			displayVector(decimalEncodedArray,0);
+			break;
+		}
+		case 3:
+		{
+			inputVector(prices);
+			double profit = buyAndSellOnce(prices);
+			cout << "Max profit = " << profit << endl;
+			break;
+		}
+		case 4:
+		{
+			int n;
+			cout << "enter n:";
+			cin >> n;
+			primes = primesToN(n);
+			displayVector(primes,0);
+			break;
+		}
+		case 5:
+		{
+			inputVector(duplicateArray);
+			sort(duplicateArray.begin(), duplicateArray.end());
+			int n = removeDuplicates(duplicateArray);
+			cout << "n = " << n << endl;
+			displayVector(duplicateArray,n);
+			break;
+		}
+		default:
+		{
+			cout << "Wrong choice - EXIT!";
+			return 0;
+		}
+		}
+	}while(true);
+
+	return 0;
+}

@@ -1,0 +1,83 @@
+//============================================================================
+// Name        : EPI_6.cpp
+// Author      : Joe
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+//6.1 - Dutch flag program
+//o(n) runtime o(1) space complexity
+typedef enum
+{
+	RED,
+	WHITE,
+	BLUE
+}color;
+
+void DutchFlagPartition(int pivot_index, vector<color>* A_ptr)
+{
+	vector<color>& A = *A_ptr;
+	color pivot = A[pivot_index];
+
+	//first pass - group all elements less than the pivot
+	int smaller = 0;
+	for(int i=0 ; i< A.size() ; i++)
+	{
+		if (A[i] < pivot)
+		{
+			swap(A[i], A[smaller++]);
+		}
+	}
+
+	//second pass - group all elements greater than the pivot
+	int larger = A.size() - 1;
+	for(int i = A.size() - 1 ; i >=0 && A[i] >= pivot ; i--)
+	{
+		if(A[i] > pivot)
+		{
+			swap(A[i], A[larger--]);
+		}
+	}
+}
+
+int main() {
+	int choice;
+	vector<color> flag;
+	flag.push_back(BLUE);
+	flag.push_back(WHITE);
+	flag.push_back(BLUE);
+	flag.push_back(RED);
+
+	cout << "EPI 6" << endl;
+	cout << "1. Dutch flag partition" << endl;
+	cout << "enter choice: " ;
+	cin >> choice;
+
+	switch (choice)
+	{
+	case 1:
+	{
+		DutchFlagPartition(WHITE, &flag);
+		vector<color>::iterator it;
+		for(it = flag.begin() ; it != flag.end() ; it++)
+		{
+			cout << *it;
+		}
+		break;
+	}
+	default:
+	{
+		cout << "Wrong choice";
+		break;
+	}
+	}
+	return 0;
+}

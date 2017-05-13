@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.148751336/CPATH/delimiter=;
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.148751336/CPATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.148751336/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.148751336/C_INCLUDE_PATH/operation=append
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.148751336/C_INCLUDE_PATH/value=/usr/include
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.148751336/append=true
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.148751336/appendContributed=true

@@ -1,0 +1,27 @@
+//============================================================================
+// Name        : Coursera_greedy.cpp
+// Author      : Joe
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "assignment1.hpp"
+
+int main(int argc, const char * argv[])
+{
+    PROFILE("All problems for Algorithms 2 course")
+
+    ///////////////////// Assignment 1 //////////////////////////
+	std::cout << "*** Assignment 1 - Scheduling problem ***" << std::endl;
+	assignment1::scheduling_problem::run_algorithm("jobs.txt");
+
+	std::cout << std::endl << "*** Assignment 1 - Prim's algorithm - Test Case 1 ***" << std::endl;
+	if (assignment1::prims_algorithm::test1())
+		std::cout << "... Test passed!" << std::endl;
+
+	std::cout << "*** Assignment 1 - Prim's algorithm - Main Test Case ***" << std::endl;
+	assignment1::prims_algorithm::run_algorithm("edges.txt");
+	return 0;
+}

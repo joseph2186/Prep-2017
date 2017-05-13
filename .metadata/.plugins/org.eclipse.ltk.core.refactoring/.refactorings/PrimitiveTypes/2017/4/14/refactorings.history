@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;PrimitiveTypes/src/bitParity.cpp&apos; to &apos;PrimitveTypes.cpp&apos;" description="Rename resource &apos;bitParity.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/bitParity.cpp" name="PrimitveTypes.cpp" stamp="1491190058603" updateReferences="true"/>
+</session>

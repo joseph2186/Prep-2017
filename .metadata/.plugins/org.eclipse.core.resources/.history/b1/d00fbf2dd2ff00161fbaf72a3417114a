@@ -1,0 +1,44 @@
+//============================================================================
+// Name        : SmallestConstructibleValue.cpp
+// Author      : Joe
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <vecto>
+#include <algorithm>
+using namespace std;
+
+int SmallestNonConstructibleValue(vector<int>& a)
+{
+	int maxConstructibleVal = 0;
+
+	/* Sort can be used on a vector */
+	sort(a.begin(), a.end());
+
+	/* iterates throught the vector */
+	for(int A:a)
+	{
+		if(a > maxConstructibleVal + 1)
+		{
+			break;
+		}
+		maxConstructibleVal += a;
+	}
+	return maxConstructibleVal;
+}
+
+int main() {
+	vector<int> a;
+	a. insert(12);
+	a.insert(2);
+	a.insert(1);
+	a.insert(15);
+	a.insert(2);
+	a.insert(4);
+
+	cout << "smallest constructible val = " << SmallestConstructibelValue(a) << endl;
+	return 0;
+}

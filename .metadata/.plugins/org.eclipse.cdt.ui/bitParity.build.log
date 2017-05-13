@@ -1,0 +1,7 @@
+21:20:52 **** Rebuild of configuration Debug for project bitParity ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\bitParity.o" "..\\src\\bitParity.cpp" 
+g++ -o bitParity.exe "src\\bitParity.o" 
+
+21:20:53 Build Finished (took 1s.722ms)
+

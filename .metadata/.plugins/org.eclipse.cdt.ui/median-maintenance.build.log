@@ -1,0 +1,9 @@
+20:51:13 **** Incremental Build of configuration Default for project median-maintenance ****
+make all 
+cc    -c -o median-maintenance.o median-maintenance.c
+cc    -c -o parse-file.o parse-file.c
+cc    -c -o heap.o heap.c
+gcc -O2 -Wall -o median-maintenance median-maintenance.c parse-file.c heap.c
+
+20:51:18 Build Finished (took 5s.487ms)
+

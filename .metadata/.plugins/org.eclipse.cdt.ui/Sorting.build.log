@@ -1,0 +1,15 @@
+23:30:24 **** Incremental Build of configuration Debug for project Sorting ****
+make all 
+Building file: ../src/Sorting.cpp
+Invoking: Cygwin C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Sorting.d" -MT"src/Sorting.o" -o "src/Sorting.o" "../src/Sorting.cpp"
+Finished building: ../src/Sorting.cpp
+ 
+Building target: Sorting.exe
+Invoking: Cygwin C++ Linker
+g++  -o "Sorting.exe"  ./src/Sorting.o   
+Finished building target: Sorting.exe
+ 
+
+23:30:25 Build Finished (took 1s.1ms)
+

@@ -1,0 +1,31 @@
+//============================================================================
+// Name        : EPI_6.cpp
+// Author      : Joe
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+
+using namespace std;
+
+//6.1 - Dutch flag program
+typedef enum
+{
+	RED,
+	WHITE,
+	BLUE
+}color;
+
+void DutchFlagPartition(int pivot_index, vector<color>* A_ptr)
+{
+	vector<color>& B = *A_ptr;
+}
+
+int main() {
+	cout << "Hello World!!!" << endl; // prints Hello World!!!
+	return 0;
+}

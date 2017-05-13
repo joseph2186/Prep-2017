@@ -1,0 +1,7 @@
+20:47:11 **** Incremental Build of configuration Debug for project Coursera ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Graphs.o" "..\\src\\Graphs.cpp" 
+g++ -o Coursera "src\\Coursera.o" "src\\Graphs.o" 
+
+20:47:12 Build Finished (took 847ms)
+

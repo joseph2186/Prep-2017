@@ -1,0 +1,9 @@
+INSTUPmain
+C:\Users\Joe\workspace\Prep-2017\Coursera\2-sum\main.py
+INFOS:&&2|1|2|0&&2|3|2|0&&2|4|2|0&&2|5|2|0&&2|2|2|0&&3|6|2|0
+TwoSum_Naive=1
+TwoSum_HashTable=5
+TwoSum_BinarySearch=4
+main=2
+binarySearch=3
+thread=6

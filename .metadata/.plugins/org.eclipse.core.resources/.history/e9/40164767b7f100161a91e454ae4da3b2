@@ -1,0 +1,205 @@
+/*
+ * Graph.cpp
+ *
+ *  Created on: Feb 5, 2017
+ *      Author: Joe
+ */
+
+#include <iostream>
+#include "Graph.h"
+#include <vector>
+#include<stack>
+using namespace std;
+
+Graph::Graph() {
+	cout << "graph constructor called with no args - default vertices assigned to 0" << endl;
+}
+
+Graph::Graph(int v)
+{
+	this->v = v;
+	this->adj = new list<int>[this->v];
+}
+
+Graph::Graph(Graph& rhs):v(rhs.v),adj(rhs.adj)
+{
+	cout << "copy constructor" << endl;
+}
+
+void Graph::addEdge(int src, int dest)
+{
+	//Assume this is not a directed graph
+	this->adj[src].push_back(dest);
+	//this->adj[dest].push_back(src);
+}
+
+void Graph::printGraph()
+{
+	for(int i=0;i<this->v;i++)
+	{
+		cout << "src = " << i << endl;
+		list<int>::iterator itr;
+		for(itr=this->adj[i].begin();itr!=this->adj[i].end();itr++)
+		{
+			cout << *itr << "->";
+		}
+		cout << endl;
+	}
+}
+
+int Graph::getNumVertices()
+{
+	return this->v;
+}
+
+void Graph::BFS(int s)
+{
+	list<int> queue;
+
+	bool visited[this->v];
+
+	for(int i=0;i<this->v;i++)
+	{
+		visited[i] = false;
+	}
+
+	queue.push_back(s);
+	visited[s] = true;
+
+	while(queue.empty()!=true)
+	{
+		int v = queue.front();
+		cout << v << " ";
+		queue.pop_front();
+
+		list<int>::iterator itr;
+		for(itr = this->adj[v].begin();itr!=this->adj[v].end();itr++)
+		{
+			if(visited[*itr]!=true)
+			{
+				visited[*itr] = true;
+				queue.push_back(*itr);
+				//cout<<"pushing"<<*itr<<endl;
+			}
+		}
+	}
+	cout << endl;
+}
+
+void Graph::DFSUtil(int i, bool visited[])
+{
+	visited[i] = true;
+	cout << i << " ";
+
+	list<int>::iterator itr;
+	for(itr = this->adj[i].begin();itr!=this->adj[i].end();itr++)
+	{
+		if(visited[*itr]!=true)
+		{
+			DFSUtil(*itr, visited);
+		}
+	}
+
+}
+
+//use the system stack
+void Graph::DFS(int s)
+{
+	bool *visited = new bool[this->v];
+
+	for(int i=0;i<this->v;i++)
+	{
+		visited[i] = false;
+	}
+
+	DFSUtil(s,visited);
+	cout << endl;
+
+	delete[] visited;
+}
+
+bool Graph::isCyclicUtil(int i, bool visited[], bool recstack[])
+{
+	visited[i]=true;
+	recstack[i]=true;
+
+	list<int>::iterator itr;
+	for(itr=this->adj[i].begin();itr!=this->adj[i].end();itr++)
+	{
+		if(visited[*itr]==false && isCyclicUtil(*itr, visited, recstack))
+		{
+			return true;
+		}
+		if(recstack[*itr])
+		{
+			return true;
+		}
+	}
+
+	recstack[i] = false;
+	return false;
+}
+
+bool Graph::isCyclic()
+{
+	bool *visited = new bool[this->v];
+	bool *recstack = new bool[this->v];
+
+	for(int i=0;i<this->v;i++)
+	{
+		visited[i]=false;
+		recstack[i]=false;
+	}
+
+	for(int i=0;i<this->v;i++)
+	{
+		if(isCyclicUtil(i,visited,recstack))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+void Graph::topologicalSortUtil(int i, bool visited[], stack<int>& stack)
+{
+	visited[i] = true;
+
+	list<int>::iterator itr;
+	for(itr=this->adj[i].begin();itr!=this->adj[i].end();itr++)
+	{
+		if(visited[*itr]!=true)
+		{
+			topologicalSortUtil(*itr, visited, stack);
+		}
+	}
+
+	stack.push(i);
+}
+
+void Graph::topologicalSort()
+{
+	bool visited = new bool[this->v];
+	stack<int> stack[this->v];
+
+	for(int i=0;i<this->v;i++)
+		visited[i]=false;
+
+	for(int i=0;i<this->v;i++)
+		topologicalSortUtil(i,visited,stack);
+
+	while(stack.empty() != true)
+	{
+		cout << stack.top() << endl;
+		stack.pop();
+	}
+
+	delete[] visited;
+}
+
+Graph::~Graph() {
+	delete[] this->adj;
+
+	cout << "all memory released" << endl;
+}
+

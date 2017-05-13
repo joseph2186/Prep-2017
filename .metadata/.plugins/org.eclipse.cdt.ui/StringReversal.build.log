@@ -1,0 +1,14 @@
+22:44:16 **** Incremental Build of configuration Debug for project StringReversal ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\StringReversal.o" "..\\src\\StringReversal.cpp" 
+..\src\StringReversal.cpp: In function 'char* revString(char*, int)':
+..\src\StringReversal.cpp:23:13: warning: comparison with string literal results in unspecified behaviour [-Waddress]
+   if(str != " ")
+             ^
+..\src\StringReversal.cpp:23:13: error: ISO C++ forbids comparison between pointer and integer [-fpermissive]
+..\src\StringReversal.cpp:35:17: error: invalid conversion from 'const char*' to 'char' [-fpermissive]
+    retString[j] = " ";
+                 ^
+
+22:44:16 Build Finished (took 394ms)
+

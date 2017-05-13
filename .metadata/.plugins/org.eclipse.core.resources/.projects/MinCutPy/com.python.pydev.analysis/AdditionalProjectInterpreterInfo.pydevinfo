@@ -1,0 +1,24 @@
+-- VERSION_4
+-- START DISKCACHE_2
+C:\Users\Joe\workspace\Prep-2017\.metadata\.plugins\org.eclipse.core.resources\.projects\MinCutPy\com.python.pydev.analysis\v2_indexcache
+Mincut|1488155483355709000|C:\Users\Joe\workspace\Prep-2017\MinCutPy\Mincut.py
+-- END DISKCACHE
+-- START DICTIONARY
+1
+1=Mincut
+-- END DICTIONARY
+-- START TREE 1
+9
+e|1|e!11@
+fil|1|FILE!11@
+mer|1|merge!10@
+min|1|minCut!10@
+r|1|r!11@
+rea|1|readEdges!10@
+rem|2|removeOne!10@removeLoops!10@
+rou|1|ROUNDS!11@
+ver|1|vertexes!10@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

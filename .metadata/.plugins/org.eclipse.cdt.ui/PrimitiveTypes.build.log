@@ -1,0 +1,7 @@
+23:38:09 **** Incremental Build of configuration Debug for project PrimitiveTypes ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\PrimitveTypes.o" "..\\src\\PrimitveTypes.cpp" 
+g++ -o PrimitiveTypes.exe "src\\PrimitveTypes.o" 
+
+23:38:09 Build Finished (took 751ms)
+

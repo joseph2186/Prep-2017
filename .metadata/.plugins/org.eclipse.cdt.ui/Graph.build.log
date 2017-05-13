@@ -1,0 +1,8 @@
+12:16:24 **** Incremental Build of configuration Debug for project Graph ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\GraphMain.o" "..\\src\\GraphMain.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
+g++ -o Graph.exe "src\\Graph.o" "src\\GraphEdgeRep.o" "src\\GraphMain.o" "src\\GraphRepWeighted.o" 
+
+12:16:26 Build Finished (took 1s.984ms)
+

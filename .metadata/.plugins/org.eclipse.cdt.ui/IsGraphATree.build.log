@@ -1,0 +1,11 @@
+20:38:53 **** Incremental Build of configuration Debug for project IsGraphATree ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\IsGraphATree.o" "..\\src\\IsGraphATree.cpp" 
+..\src\IsGraphATree.cpp: In member function 'bool graph::IsCycleUtil(int, bool*, bool*)':
+..\src\IsGraphATree.cpp:58:6: warning: suggest explicit braces to avoid ambiguous 'else' [-Wparentheses]
+    if(visited[v] != true)
+      ^
+g++ -o IsGraphATree.exe "src\\IsGraphATree.o" 
+
+20:38:54 Build Finished (took 972ms)
+

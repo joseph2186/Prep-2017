@@ -1,0 +1,7 @@
+21:29:49 **** Incremental Build of configuration Debug for project MinCut ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\MinCut.o" "..\\src\\MinCut.cpp" 
+g++ -o MinCut.exe "src\\MinCut.o" 
+
+21:29:50 Build Finished (took 842ms)
+

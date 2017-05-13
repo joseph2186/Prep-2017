@@ -5,9 +5,11 @@
  *      Author: Joe
  */
 
+#include <stdio.h>
 #include <iostream>
 #include "Graph.h"
 #include <vector>
+#include <list>
 #include<stack>
 #include<queue>
 using namespace std;
