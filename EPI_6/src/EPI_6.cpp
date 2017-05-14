@@ -13,6 +13,7 @@
 #include <limits>
 #include <queue>
 #include <random>
+#include <math.h>
 
 using namespace std;
 
@@ -174,6 +175,59 @@ void randomSampling(int k, vector<int> *A_ptr)
 	}
 }
 
+//6.16 - Sudoku checker
+bool hasDuplicate(const vector<vector<int>>& partial_assigned, int row_start, int row_end, int col_start, int col_end)
+{
+	deque<bool> isPresent(partial_assigned.size(), false);
+	for(int i=row_start ; i<row_end ; i++)
+	{
+		for(int j=col_start ; j<col_end ; j++)
+		{
+			if(partial_assigned[i][j] != 0 && isPresent[partial_assigned[i][j]] == true)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool  isSudokuValid(const vector<vector<int>>& partial_assigned)
+{
+	//row constraint
+	for(int i=0 ; i<partial_assigned.size() ; i++)
+	{
+		if(hasDuplicate(partial_assigned, i, i+1, 0, partial_assigned.size()))
+		{
+			return false;
+		}
+	}
+
+	//column constraint
+	for(int j=0 ; j<partial_assigned.size() ; j++)
+	{
+		if(hasDuplicate(partial_assigned, 0, partial_assigned.size(), j, j+1))
+		{
+			return false;
+		}
+	}
+
+	//grid constraint
+	int grid_size = sqrt(partial_assigned.size());
+	for(int i=0;i<grid_size;i++)
+	{
+		for(int j=0;j<grid_size;j++)
+		{
+			if(hasDuplicate(partial_assigned, grid_size*i, grid_size*(i+1), grid_size*j, grid_size*(j+1)))
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
 int main() {
 	int choice;
 	vector<int> flag;
@@ -182,12 +236,13 @@ int main() {
 	vector<int> primes;
 	vector<int> duplicateArray;
 	vector<int> randomSamplingArray;
+	vector<vector<int>> partialAssigned;
 
 	cout << "EPI 6" << endl;
 	do
 	{
 		cout << "1. Dutch flag partition" << endl << "2. Add 1 to decimal representation of number as array" << endl << "3. Buy and sell stocks once" << endl;
-		cout << "4. Print prime to n" << endl << "5. Eliminate duplicates in array" << endl << "6.  Random sampling of data" << endl;
+		cout << "4. Print prime to n" << endl << "5. Eliminate duplicates in array" << endl << "6.  Random sampling of data" << endl << "7. Is sudoku valid" << endl;
 		cout << "enter choice: " ;
 		cin >> choice;
 	    switch (choice)
@@ -245,6 +300,37 @@ int main() {
 			else
 				randomSampling(k, &randomSamplingArray);
 			displayVector(randomSamplingArray, 0);
+			break;
+		}
+		case 7:
+		{
+			int row, col, val;
+			cout << "enter row size: ";
+			cin >> row;
+			cout << endl << "enter column size: ";
+			cin >> col;
+			cout << endl << "enter the elements of the array one by one:" << endl;
+			partialAssigned.resize(row, vector<int>(col, 0));
+			for(int i=0;i<row;i++)
+			{
+				for(int j=0;j<col;j++){
+					cin >> val;
+					partialAssigned[i][j] = val;
+				}
+
+			}
+
+			for(int i=0;i<row;i++){
+				for(int j=0;j<col;j++){
+					cout << partialAssigned[i][j] << " ";
+				}
+				cout << endl;
+			}
+
+			if (isSudokuValid(partialAssigned))
+				cout << endl << "sudoku valid" << endl;
+			else
+				cout << "sudoku not valid" << endl;
 			break;
 		}
 		default:

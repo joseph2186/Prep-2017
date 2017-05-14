@@ -1,19 +1,26 @@
-20:47:09 **** Incremental Build of configuration Debug for project EPI_6 ****
+21:00:29 **** Incremental Build of configuration Debug for project EPI_6 ****
 Info: Internal Builder is used for build
 g++ -std=c++0x -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\EPI_6.o" "..\\src\\EPI_6.cpp" 
 ..\src\EPI_6.cpp: In function 'void DutchFlagPartition(int, std::vector<int>*)':
-..\src\EPI_6.cpp:66:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+..\src\EPI_6.cpp:67:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
   for(int i=0 ; i< A.size() ; i++)
                  ^
 ..\src\EPI_6.cpp: In function 'int removeDuplicates(std::vector<int>&)':
-..\src\EPI_6.cpp:114:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+..\src\EPI_6.cpp:115:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
   for(int i=0 ; i<A.size() ; i++)
                  ^
+..\src\EPI_6.cpp: In function 'bool isSudokuValid(const std::vector<std::vector<int> >&)':
+..\src\EPI_6.cpp:198:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(int i=0 ; i<partial_assigned.size() ; i++)
+                 ^
+..\src\EPI_6.cpp:207:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(int j=0 ; j<partial_assigned.size() ; j++)
+                 ^
 ..\src\EPI_6.cpp: In function 'int main()':
-..\src\EPI_6.cpp:243:11: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+..\src\EPI_6.cpp:298:11: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
     if ( k >= randomSamplingArray.size() )
            ^
 g++ -o EPI_6.exe "src\\EPI_6.o" 
 
-20:47:11 Build Finished (took 1s.838ms)
+21:00:32 Build Finished (took 2s.261ms)
 
