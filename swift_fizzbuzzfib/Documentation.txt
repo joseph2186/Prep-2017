@@ -1,0 +1,75 @@
+This is a program to generate the first n Fibonacci numbers F(n), printing:
+1. "Buzz" when F(n) is divisible by 3
+2. "Fizz" when F(n) is divisible by 5
+3. "FizzBuzz" when F(n) is divisible by 15
+4. "BuzzFizz" when F(n) is prime
+5. Value of F(n) otherwise
+
+Assumptions:
+1. The fibonacci number is first checked to be divisible by 15. If not it is checked against 3 and 5.
+2. If all the divisible conditions fail, only then the number is checked to be a prime.
+3. The only exception to these rules is the value 0.
+
+The executable when run takes a user input as one of the options for the value of n and prints out one of the above options.
+Executable location - /swift_fizzbuzzfib/Debug/swift_fizzbuzzfib.exe
+
+Dependancy - GNU c++ library - headers used are iostream and cstdlib
+
+Testing - The executable when run provides the user an option to generate a random value for n (in the range 0-100) and print out one of the above options.
+The value along with the reason one of the strings was printed is displayed for verification.
+
+Example:
+
+Fizz Buzz Fib
+ Enter 1 for testing with a random value of n or 2 for user input or 3 to exit: 1
+random value generated for n is 33
+0
+1
+1
+value = 2 (prime)BuzzFizz
+value = 3 (/ by 3)Buzz
+value = 5 (/ by 5)Fizz
+8
+value = 13 (prime)BuzzFizz
+value = 21 (/ by 3)Buzz
+34
+value = 55 (/ by 5)Fizz
+value = 89 (prime)BuzzFizz
+value = 144 (/ by 3)Buzz
+value = 233 (prime)BuzzFizz
+377
+value = 610 (/ by 5)Fizz
+value = 987 (/ by 3)Buzz
+value = 1597 (prime)BuzzFizz
+2584
+4181
+value = 6765 (/ by 15)FizzBuzz
+10946
+17711
+value = 28657 (prime)BuzzFizz
+value = 46368 (/ by 3)Buzz
+value = 75025 (/ by 5)Fizz
+121393
+196418
+value = 317811 (/ by 3)Buzz
+value = 514229 (prime)BuzzFizz
+value = 832040 (/ by 5)Fizz
+1346269
+value = 2178309 (/ by 3)Buzz
+ Enter 1 for testing with a random value of n or 2 for user input or 3 to exit: 2
+enter value of n:10
+0
+1
+1
+BuzzFizz
+Buzz
+Fizz
+8
+BuzzFizz
+Buzz
+34
+
+ Enter 1 for testing with a random value of n or 2 for user input or 3 to exit: 4
+wrong input, try again
+ Enter 1 for testing with a random value of n or 2 for user input or 3 to exit: 3
+exit!
